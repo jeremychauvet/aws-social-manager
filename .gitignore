@@ -44,3 +44,6 @@ backend/composer.phar
 
 # Embedded web-server pid file
 /.web-server-pid
+
+# MacOS
+.DS_Store
