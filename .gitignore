@@ -47,3 +47,6 @@ backend/composer.phar
 
 # MacOS
 .DS_Store
+
+# Idea
+.idea
