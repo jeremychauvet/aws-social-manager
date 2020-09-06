@@ -29,7 +29,7 @@ backend/composer.phar
 lambda/functions/*/.serverless
 lambda/functions/*/node_modules
 lambda/functions/*/package
-lambda/layers/*.zip
+lambda/layers/
 
 # MacOS
 .DS_Store
