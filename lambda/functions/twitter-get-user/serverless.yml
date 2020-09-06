@@ -1,0 +1,37 @@
+service: twitter
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: eu-central-1
+  memorySize: 128 # optional, in MB, default is 1024
+  timeout: 4 # optional, in seconds, default is 6
+
+plugins:
+  - serverless-ssm-fetch
+custom:
+  serverlessSsmFetch:
+    TWITTER_CONSUMER_KEY: /twitter/consumer_key~true
+    TWITTER_CONSUMER_SECRET_KEY: /twitter/consumer_secret_key~true
+
+functions:
+  get-user:
+    handler: handler.main
+    description: Get Twitter user's data from it's user ID given in parameter.
+    layers:
+      - { Ref: TweepyLambdaLayer }
+    ssmToEnvironment:
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET_KEY
+
+layers:
+  tweepy:
+    package:
+      artifact: ../../layers/tweepy.zip
+    name: tweepy # optional, Deployed Lambda layer name
+    description: Tweepy package use to communicate with Twitter API. # optional, Description to publish to AWS
+    compatibleRuntimes: # optional, a list of runtimes this layer is compatible with
+      - python3.8
+    licenseInfo: GPLv3 
+    retain: false # optional, false by default. If true, layer versions are not deleted as new ones are created
