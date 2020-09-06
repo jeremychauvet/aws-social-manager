@@ -26,9 +26,10 @@ backend/composer.phar
 /.web-server-pid
 
 # Lambda
-lambda/*/.serverless
-lambda/*/node_modules
-lambda/*/package
+lambda/functions/*/.serverless
+lambda/functions/*/node_modules
+lambda/functions/*/package
+lambda/layers/*.zip
 
 # MacOS
 .DS_Store
