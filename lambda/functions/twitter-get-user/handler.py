@@ -1,16 +1,11 @@
 import json
 import tweepy
-from tweepy.auth import OAuthHandler
 import os
 
 def main(event, context):
-
-  users = getUser()
-
+  
   body = {
-      "message": "Go Serverless v1.0! Your function executed successfully!",
-      "input": event,
-      "getUser": users
+      "message": "Go Serverless v1.0! Your function executed successfully!"
   }
 
   response = {
@@ -19,7 +14,6 @@ def main(event, context):
   }
 
   return response
-
 
 def getUser():
   # assign the values accordingly
@@ -40,8 +34,6 @@ def getUser():
   # fetching the statuses
   statuses = api.home_timeline()
 
-  return statuses
-
   # printing the screen names of each status
-  #for status in statuses:
-  #  print(status.user.screen_name)
+  for status in statuses:
+   print(status.user.screen_name)
