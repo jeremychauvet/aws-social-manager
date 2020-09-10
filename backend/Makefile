@@ -1,8 +1,8 @@
 .PHONY: start stop log domain
-start: 
+start:
 	symfony server:start -d
 
-stop: 
+stop:
 	symfony server:stop
 
 log:
