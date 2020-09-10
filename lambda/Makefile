@@ -2,7 +2,7 @@
 .DEFAULT: deploy
 
 LAYERS_PATH=layers
-TWEEPY_PATH=$(LAYERS_PATH)/tweepy
+TMP_PATH=$(LAYERS_PATH)/tmp
 OUTPUT_PATH=$(LAYERS_PATH)/output
 
 deploy: build
@@ -10,9 +10,9 @@ deploy: build
 
 build: 
 	rm -f $(LAYERS_PATH)/tweepy.zip || true
-	mkdir -p $(TWEEPY_PATH) && mkdir -p $(OUTPUT_PATH)/python
-	pip3 install --upgrade --target $(TWEEPY_PATH) tweepy
-	mv $(TWEEPY_PATH) $(OUTPUT_PATH)/python
+	mkdir -p $(TMP_PATH) && mkdir -p $(OUTPUT_PATH)/python
+	pip3.8 install --upgrade --target $(TMP_PATH) tweepy
+	mv $(TMP_PATH)/* $(OUTPUT_PATH)/python
 	cd $(OUTPUT_PATH) && zip -r tweepy.zip python/ && mv tweepy.zip ../tweepy.zip && cd -
-	rm -fr $(TWEEPY_PATH)
+	rm -fr $(TMP_PATH)
 	rm -fr $(OUTPUT_PATH)
