@@ -1,5 +1,5 @@
 # Functions
-.PHONY: deploy get-user-data get-user-followers 
+.PHONY: init deploy lint test-get-user-data test-get-user-followers
 .DEFAULT: deploy
 
 init:
@@ -7,6 +7,9 @@ init:
 
 deploy: init
 	serverless deploy
+
+lint:
+	pre-commit run --all-files
 
 test-get-user-data:
 	serverless invoke --function get-user-data --stage dev --region eu-central-1 --path twitter-get-user-data/test/payload.json

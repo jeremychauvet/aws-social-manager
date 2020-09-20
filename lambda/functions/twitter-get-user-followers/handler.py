@@ -2,9 +2,10 @@ import tweepy
 import os
 import time
 
+
 def main(event, context):
 
-    return {"statusCode": 200, "output": getUserFollowers(event['userId'])}
+    return {"statusCode": 200, "output": getUserFollowers(event["userId"])}
 
 
 def getUserFollowers(userId):

@@ -1,8 +1,8 @@
 # Functions
-.PHONY: deploy-functions 
+.PHONY: deploy-functions
 .DEFAULT: deploy-functions
 
-deploy-functions:	
+deploy-functions:
 	cd functions && make deploy
 
 # Layers.

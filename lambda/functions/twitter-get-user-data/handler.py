@@ -4,7 +4,7 @@ import os
 
 def main(event, context):
 
-    return {"statusCode": 200, "output": getUserData(event['screenName'])}
+    return {"statusCode": 200, "output": getUserData(event["screenName"])}
 
 
 def getUserData(screenName):
