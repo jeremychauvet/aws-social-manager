@@ -27,6 +27,7 @@ backend/composer.phar
 
 # Lambda
 lambda/functions/*/.serverless
+lambda/functions/*/__pycache__
 lambda/functions/*/node_modules
 lambda/functions/*/package
 lambda/layers/
