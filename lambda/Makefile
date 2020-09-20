@@ -1,14 +1,14 @@
-.PHONY: deploy
-.DEFAULT: deploy
+.PHONY: deploy-functions tweepy-lib-layer
+.DEFAULT: deploy-functions
 
 LAYERS_PATH=layers
 TMP_PATH=$(LAYERS_PATH)/tmp
 OUTPUT_PATH=$(LAYERS_PATH)/output
 
-deploy: build
-	cd functions/twitter-get-user/ && make deploy
+deploy-functions: 
+	cd functions/twitter-get-user-data/ && make deploy
 
-build:
+tweepy-lib-layer:
 	rm -f $(LAYERS_PATH)/tweepy.zip || true
 	mkdir -p $(TMP_PATH) && mkdir -p $(OUTPUT_PATH)/python
 	pip3.8 install --upgrade --target $(TMP_PATH) tweepy
