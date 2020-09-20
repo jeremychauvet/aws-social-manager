@@ -1,6 +1,6 @@
 {
-  "name": "twitter",
-  "description": "",
+  "name": "twitter-get-user-data",
+  "description": "Function used to get user data from its screen name.",
   "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {

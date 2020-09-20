@@ -18,9 +18,9 @@ custom:
     TWITTER_ACCESS_TOKEN_SECRET: /twitter/access_token_secret~true
 
 functions:
-  get-user:
+  get-user-data:
     handler: handler.main
-    description: Get Twitter user's data from it's user ID given in parameter.
+    description: Get Twitter user's data from it's screen name given in parameter.
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
