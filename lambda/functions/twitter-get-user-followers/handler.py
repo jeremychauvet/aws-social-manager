@@ -23,8 +23,10 @@ def getUserFollowers(userId):
 
     # Fetching user followers.
     followers = []
-    for page in tweepy.Cursor(api.followers_ids, user_id=userId).pages():
+    maxDepth = 1
+    sleepTimeBetweenPages = 1
+    for page in tweepy.Cursor(api.followers_ids, user_id=userId).pages(maxDepth):
         followers.extend(page)
-        time.sleep(2)
+        time.sleep(sleepTimeBetweenPages)
 
-    return len(followers)
+    return followers
