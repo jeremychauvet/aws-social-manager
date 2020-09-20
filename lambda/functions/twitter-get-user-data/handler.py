@@ -44,4 +44,4 @@ def getUser(screenName):
 
     except:
         e = sys.exc_info()[0]
-        print "Error: %s" % e
+        print("Error: %s" % e)
