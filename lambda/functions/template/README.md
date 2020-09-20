@@ -1,8 +1,8 @@
-# Function twitter-get-user-data
+# Function twitter-CHANGE-ME
 
 ## Description
 
-Lambda used to get user data (UserId, etc) from a screen name given in parameter.
+Lambda used to 
 
 ## Function prerequisites
 
@@ -17,11 +17,24 @@ Provision AWS System Manager Parameter Store with keys :
 
 ## Parameters
 
-| Parameter  | Type   | Example |
-|------------|--------|---------|
-| ScreenName | string | apple   |
+| Parameter  | Type   | Example     |
+|------------|--------|-------------|
+| userId     | string | 380749300   |
+
+## Output
+
+Output given when using command `make test-CHANGE-ME` (Makefile located in lambda/functions/)
+
+```json
+{
+  "statusCode": 200,
+  "output": [
+
+  ]
+}
+```
 
 ## Tests
 
 Function tests are located in `test` folder.
-You can run it with command `make test`.
+You can run it with command `make test-CHANGE-ME` in folder lambda/functions/
