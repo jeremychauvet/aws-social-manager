@@ -4,10 +4,10 @@ import os
 
 def main(event, context):
 
-    return {"statusCode": 200, "output": getUser(event.screenName)}
+    return {"statusCode": 200, "output": getUserData(event.screenName)}
 
 
-def getUser(screenName):
+def getUserData(screenName):
     # assign the values accordingly
     consumer_key = os.environ["TWITTER_CONSUMER_KEY"]
     consumer_secret = os.environ["TWITTER_CONSUMER_SECRET"]
