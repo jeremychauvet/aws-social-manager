@@ -20,3 +20,8 @@ Provision AWS System Manager Parameter Store with keys :
 | Parameter  | Type   | Example |
 |------------|--------|---------|
 | ScreenName | string | apple   |
+
+## Tests
+
+Function tests are located in `test` folder.
+You can run it with command `make test`.
