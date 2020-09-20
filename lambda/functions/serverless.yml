@@ -8,6 +8,9 @@ provider:
   memorySize: 128 # optional, in MB, default is 1024
   timeout: 4 # optional, in seconds, default is 6
 
+package:
+  individually: true
+
 plugins:
   - serverless-ssm-fetch
 custom:
@@ -19,8 +22,18 @@ custom:
 
 functions:
   get-user-data:
-    handler: handler.main
+    handler: twitter-get-user-data/handler.main
     description: Get Twitter user's data from it's screen name given in parameter.
+    layers:
+      - { Ref: TweepyLambdaLayer }
+    ssmToEnvironment:
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET
+      - TWITTER_ACCESS_TOKEN
+      - TWITTER_ACCESS_TOKEN_SECRET
+  get-user-followers:
+    handler: twitter-get-user-followers/handler.main
+    description: Function used to retrive followers of user given in parameter.
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
@@ -32,7 +45,7 @@ functions:
 layers:
   tweepy:
     package:
-      artifact: ../../layers/tweepy.zip
+      artifact: ../layers/tweepy.zip
     name: tweepy # optional, Deployed Lambda layer name
     description: Tweepy package use to communicate with Twitter API. # optional, Description to publish to AWS
     compatibleRuntimes: # optional, a list of runtimes this layer is compatible with
