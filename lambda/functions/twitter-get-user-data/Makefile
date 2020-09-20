@@ -1,4 +1,5 @@
 .PHONY: init deploy test
+.DEFAULT: deploy
 
 init:
 	serverless plugin install --name serverless-ssm-fetch
