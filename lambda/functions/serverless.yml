@@ -51,6 +51,16 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+  follow-user:
+    handler: twitter-follow-user/handler.main
+    description: Function used to follow user, and mute it.
+    layers:
+      - { Ref: TweepyLambdaLayer }
+    ssmToEnvironment:
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET
+      - TWITTER_ACCESS_TOKEN
+      - TWITTER_ACCESS_TOKEN_SECRET
 
 layers:
   tweepy:
