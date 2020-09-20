@@ -23,7 +23,7 @@ Provision AWS System Manager Parameter Store with keys :
 
 ## Output
 
-Output given when using command `make test-get-user-data` (lambda/functions/)
+Output given when using command `make test-get-user-data` (Makefile located in lambda/functions/)
 
 ```json
 {
@@ -35,4 +35,4 @@ Output given when using command `make test-get-user-data` (lambda/functions/)
 ## Tests
 
 Function tests are located in `test` folder.
-You can run it with command `make test`.
+You can run it with command `make test-get-user-data` in folder lambda/functions/
