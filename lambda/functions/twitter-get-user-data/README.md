@@ -21,6 +21,17 @@ Provision AWS System Manager Parameter Store with keys :
 |------------|--------|---------|
 | ScreenName | string | apple   |
 
+## Output
+
+Output given when using command `make test-get-user-data` (lambda/functions/)
+
+```json
+{
+    "statusCode": 200,
+    "output": 380749300
+}
+```
+
 ## Tests
 
 Function tests are located in `test` folder.
