@@ -41,6 +41,16 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+  get-rate-limit-status:
+    handler: twitter-get-rate-limit-status/handler.main
+    description: Function used to get Twitter API limit status.
+    layers:
+      - { Ref: TweepyLambdaLayer }
+    ssmToEnvironment:
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET
+      - TWITTER_ACCESS_TOKEN
+      - TWITTER_ACCESS_TOKEN_SECRET
 
 layers:
   tweepy:
