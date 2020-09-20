@@ -5,7 +5,7 @@ LAYERS_PATH=layers
 TMP_PATH=$(LAYERS_PATH)/tmp
 OUTPUT_PATH=$(LAYERS_PATH)/output
 
-deploy-functions: 
+deploy-functions:
 	cd functions/twitter-get-user-data/ && make deploy
 
 tweepy-lib-layer:

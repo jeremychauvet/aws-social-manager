@@ -14,7 +14,7 @@ Provision AWS System Manager Parameter Store with keys :
 | /twitter/consumer_secret     | Consumer secret     | SecureString |
 | /twitter/access_token        | Access token        | SecureString |
 | /twitter/access_token_secret | Access token secret | SecureString |
-  
+
 ## Parameters
 
 | Parameter  | Type   | Example |
