@@ -1,5 +1,5 @@
 # Functions
-.PHONY: init deploy lint test-get-user-data test-get-user-followers
+.PHONY: init deploy lint test-get-user-data test-get-user-followers test-follow-user
 .DEFAULT: deploy
 
 init:
@@ -20,5 +20,5 @@ test-get-user-followers:
 test-get-rate-limit-status:
 	serverless invoke --function get-rate-limit-status --stage dev --region eu-central-1
 
-test-follower-user:
+test-follow-user:
 	serverless invoke --function follow-user --stage dev --region eu-central-1 --path twitter-follow-user/test/payload.json
