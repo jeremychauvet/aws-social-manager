@@ -1,10 +1,13 @@
 import tweepy
 import os
 import time
+import json
 
 def main(event, context):
 
-    return {"statusCode": 200, "output": followUser(event["userId"])}
+    return {
+        "output": followUser(event["userId"])
+    }
 
 
 def followUser(userId):
@@ -24,10 +27,9 @@ def followUser(userId):
     api.create_friendship(user_id=userId)
 
     # Mute user.
-    userData = api.create_mute(user_id=userId)
+    api.create_mute(user_id=userId)
 
     return {
-        'timestamp': time.ctime(),
-        'userId': userId,
-        'userData': userData
+        "statusCode": 200,
+        "userId": userId
     }
