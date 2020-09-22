@@ -2,7 +2,7 @@
 
 ## Description
 
-Lambda used to 
+Lambda used to
 
 ## Function prerequisites
 
