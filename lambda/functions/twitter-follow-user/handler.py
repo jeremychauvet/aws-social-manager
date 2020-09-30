@@ -2,6 +2,8 @@ import tweepy
 import os
 import time
 import json
+import boto3
+from datetime import date
 
 def main(event, context):
 
@@ -28,6 +30,21 @@ def followUser(userId):
 
     # Mute user.
     api.create_mute(user_id=userId)
+
+    # Store user data in DynamoDB.
+    dynamodb = boto3.resource('dynamodb', region_name='eu-central-1')
+    table = dynamodb.Table('social-manager')
+
+    # Get current date.
+    currentDate = date.today()
+
+    response = table.put_item(
+        Item={
+            'UserId': userId,
+            'FollowDate': str(currentDate)
+        }
+    )
+    print(response)
 
     return {
         "statusCode": 200,
