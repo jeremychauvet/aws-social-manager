@@ -17,7 +17,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: 'arn:aws:dynamodb:eu-central-1:*:social-manager/'
+      Resource: 'arn:aws:dynamodb:eu-central-1:*:table/social-manager'
 
 package:
   individually: true
@@ -42,6 +42,11 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+    tags:
+      app: social-manager
+      env: dev
+      runtime: python3.8
+
   get-user-followers:
     handler: twitter-get-user-followers/handler.main
     description: Function used to retrive followers of user given in parameter.
@@ -52,6 +57,11 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+    tags:
+      app: social-manager
+      env: dev
+      runtime: python3.8
+
   get-rate-limit-status:
     handler: twitter-get-rate-limit-status/handler.main
     description: Function used to get Twitter API limit status.
@@ -62,6 +72,11 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+    tags:
+      app: social-manager
+      env: dev
+      runtime: python3.8
+
   follow-user:
     handler: twitter-follow-user/handler.main
     description: Function used to follow user, and mute it.
@@ -72,6 +87,10 @@ functions:
       - TWITTER_CONSUMER_SECRET
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
+    tags:
+      app: social-manager
+      env: dev
+      runtime: python3.8
 
 layers:
   tweepy:
