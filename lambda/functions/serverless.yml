@@ -7,9 +7,9 @@ provider:
   region: eu-central-1
   memorySize: 128 # optional, in MB, default is 1024
   timeout: 4 # optional, in seconds, default is 6
-  iamRoleStatements: 
+  iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:DescribeTable
         - dynamodb:Query
         - dynamodb:Scan
