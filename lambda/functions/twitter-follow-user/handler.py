@@ -37,7 +37,7 @@ def followUser(userId):
     # Get current date.
     currentDate = date.today()
 
-    response = table.put_item(
+    table.put_item(
         Item={
             "UserId": userId,
             "FollowDate": str(currentDate),
