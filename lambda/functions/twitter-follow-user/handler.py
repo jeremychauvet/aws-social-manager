@@ -5,11 +5,10 @@ import json
 import boto3
 from datetime import date
 
+
 def main(event, context):
 
-    return {
-        "output": followUser(event["userId"])
-    }
+    return {"output": followUser(event["userId"])}
 
 
 def followUser(userId):
@@ -26,27 +25,25 @@ def followUser(userId):
     )
 
     # Follow user
-    api.create_friendship(user_id=userId)
+    user = api.create_friendship(user_id=userId)
 
     # Mute user.
     api.create_mute(user_id=userId)
 
     # Store user data in DynamoDB.
-    dynamodb = boto3.resource('dynamodb', region_name='eu-central-1')
-    table = dynamodb.Table('social-manager')
+    dynamodb = boto3.resource("dynamodb", region_name="eu-central-1")
+    table = dynamodb.Table("social-manager")
 
     # Get current date.
     currentDate = date.today()
 
     response = table.put_item(
         Item={
-            'UserId': userId,
-            'FollowDate': str(currentDate)
+            "UserId": userId,
+            "FollowDate": str(currentDate),
+            "UserLabel": str(user.name),
+            "UserSlug": str(user.screen_name),
         }
     )
-    print(response)
 
-    return {
-        "statusCode": 200,
-        "userId": userId
-    }
+    return {"statusCode": 200, "userId": userId}
