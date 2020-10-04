@@ -43,9 +43,9 @@ functions:
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
     tags:
-      app: social-manager
-      env: dev
-      runtime: python3.8
+      App: social-manager
+      Environment: dev
+      Runtime: python3.8
 
   get-user-followers:
     handler: twitter-get-user-followers/handler.main
@@ -58,9 +58,9 @@ functions:
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
     tags:
-      app: social-manager
-      env: dev
-      runtime: python3.8
+      App: social-manager
+      Environment: dev
+      Runtime: python3.8
 
   get-rate-limit-status:
     handler: twitter-get-rate-limit-status/handler.main
@@ -73,9 +73,9 @@ functions:
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
     tags:
-      app: social-manager
-      env: dev
-      runtime: python3.8
+      App: social-manager
+      Environment: dev
+      Runtime: python3.8
 
   follow-user:
     handler: twitter-follow-user/handler.main
@@ -88,9 +88,9 @@ functions:
       - TWITTER_ACCESS_TOKEN
       - TWITTER_ACCESS_TOKEN_SECRET
     tags:
-      app: social-manager
-      env: dev
-      runtime: python3.8
+      App: social-manager
+      Environment: dev
+      Runtime: python3.8
 
 layers:
   tweepy:
