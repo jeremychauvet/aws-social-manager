@@ -1,17 +1,16 @@
 import tweepy
 import os
 import time
-import json
 import boto3
 from datetime import date
 
 
 def main(event, context):
 
-    return {"output": followUser(event["userId"])}
+    return {"output": follow_user(event["userId"])}
 
 
-def followUser(userId):
+def follow_user(userId):
     consumer_key = os.environ["TWITTER_CONSUMER_KEY"]
     consumer_secret = os.environ["TWITTER_CONSUMER_SECRET"]
     access_token = os.environ["TWITTER_ACCESS_TOKEN"]
@@ -32,18 +31,20 @@ def followUser(userId):
 
     # Store user data in DynamoDB.
     dynamodb = boto3.resource("dynamodb", region_name="eu-central-1")
-    table = dynamodb.Table("social-manager")
+    table = dynamodb.Table("social-manager-user-followed")
 
-    # Get current date.
-    currentDate = date.today()
+    # Get current date and time.
+    current_date = date.today()
+    current_time = time.strftime("%H:%M:%S", time.localtime())
 
     table.put_item(
         Item={
             "UserId": userId,
-            "FollowDate": str(currentDate),
+            "DateFollowed": str(current_date),
+            "TimeFollowed": str(current_time),
             "UserLabel": str(user.name),
             "UserSlug": str(user.screen_name),
         }
     )
 
-    return {"statusCode": 200, "userId": userId}
+    return {"statusCode": "200"}
