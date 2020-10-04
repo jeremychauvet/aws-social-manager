@@ -7,7 +7,7 @@ plan: init
 	terraform plan
 
 apply: init
-	terraform apply
+	terraform apply -auto-approve
 
 lint:
 	pre-commit run --all-files
