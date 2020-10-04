@@ -1,14 +1,15 @@
 import tweepy
 import os
 import time
+import boto3
 
 
 def main(event, context):
 
-    return {"statusCode": 200, "output": getUserFollowers(event["userId"])}
+    return {"statusCode": 200, "output": get_user_followers(event["userId"])}
 
 
-def getUserFollowers(userId):
+def get_user_followers(userId):
     consumer_key = os.environ["TWITTER_CONSUMER_KEY"]
     consumer_secret = os.environ["TWITTER_CONSUMER_SECRET"]
     access_token = os.environ["TWITTER_ACCESS_TOKEN"]
@@ -29,4 +30,11 @@ def getUserFollowers(userId):
         followers.extend(page)
         time.sleep(sleepTimeBetweenPages)
 
-    return followers
+    # Store user data in DynamoDB.
+    dynamodb = boto3.resource("dynamodb", region_name="eu-central-1")
+    table = dynamodb.Table("social-manager-user-to-follow")
+
+    for follower in followers:
+        table.put_item(Item={"TwitterId": follower})
+
+    return {"statusCode": "200"}

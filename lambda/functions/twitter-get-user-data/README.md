@@ -2,7 +2,7 @@
 
 ## Description
 
-Lambda used to get user data (UserId, etc) from a screen name given in parameter.
+Lambda used to get user data (id, etc) from a screen name given in parameter.
 
 ## Function prerequisites
 

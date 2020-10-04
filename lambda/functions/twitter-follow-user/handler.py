@@ -7,10 +7,10 @@ from datetime import date
 
 def main(event, context):
 
-    return {"output": follow_user(event["userId"])}
+    return {"output": follow_user(event["twitterId"])}
 
 
-def follow_user(userId):
+def follow_user(twitterId):
     consumer_key = os.environ["TWITTER_CONSUMER_KEY"]
     consumer_secret = os.environ["TWITTER_CONSUMER_SECRET"]
     access_token = os.environ["TWITTER_ACCESS_TOKEN"]
@@ -24,10 +24,10 @@ def follow_user(userId):
     )
 
     # Follow user
-    user = api.create_friendship(user_id=userId)
+    user = api.create_friendship(user_id=twitterId)
 
     # Mute user.
-    api.create_mute(user_id=userId)
+    api.create_mute(user_id=twitterId)
 
     # Store user data in DynamoDB.
     dynamodb = boto3.resource("dynamodb", region_name="eu-central-1")
@@ -39,7 +39,7 @@ def follow_user(userId):
 
     table.put_item(
         Item={
-            "UserId": userId,
+            "TwitterId": twitterId,
             "DateFollowed": str(current_date),
             "TimeFollowed": str(current_time),
             "UserLabel": str(user.name),

@@ -19,7 +19,7 @@ Provision AWS System Manager Parameter Store with keys :
 
 | Parameter  | Type   | Example     |
 |------------|--------|-------------|
-| userId     | string | 380749300   |
+| twitterId  | number | 380749300   |
 
 ## Output
 

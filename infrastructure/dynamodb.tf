@@ -3,17 +3,16 @@ resource "aws_dynamodb_table" "social-manager-db-user-followed" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "UserId"
+  hash_key       = "TwitterId"
 
   attribute {
-    name = "UserId"
-    type = "S"
+    name = "TwitterId"
+    type = "N"
   }
 
   tags = {
     App   = "aws-social-manager"
     Environment = "dev"
-    CreatedBy   = "Jeremy Chauvet"
   }
 }
 
@@ -22,16 +21,15 @@ resource "aws_dynamodb_table" "social-manager-db-user-to-follow" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "UserId"
+  hash_key       = "TwitterId"
 
   attribute {
-    name = "UserId"
-    type = "S"
+    name = "TwitterId"
+    type = "N"
   }
 
   tags = {
     App   = "aws-social-manager"
     Environment = "dev"
-    CreatedBy   = "Jeremy Chauvet"
   }
 }
