@@ -6,7 +6,6 @@ provider:
   stage: dev
   region: eu-central-1
   memorySize: 128 # optional, in MB, default is 1024
-  timeout: 4 # optional, in seconds, default is 6
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -35,6 +34,7 @@ functions:
   get-user-data:
     handler: twitter-get-user-data/handler.main
     description: Get Twitter user's data from it's screen name given in parameter.
+    timeout: 10
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
@@ -50,6 +50,7 @@ functions:
   get-user-followers:
     handler: twitter-get-user-followers/handler.main
     description: Function used to retrive followers of user given in parameter.
+    timeout: 180
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
@@ -65,6 +66,7 @@ functions:
   get-rate-limit-status:
     handler: twitter-get-rate-limit-status/handler.main
     description: Function used to get Twitter API limit status.
+    timeout: 4
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
@@ -80,6 +82,7 @@ functions:
   follow-user:
     handler: twitter-follow-user/handler.main
     description: Function used to follow user, and mute it.
+    timeout: 4
     layers:
       - { Ref: TweepyLambdaLayer }
     ssmToEnvironment:
