@@ -6,10 +6,10 @@ import boto3
 
 def main(event, context):
 
-    return {"statusCode": 200, "output": get_user_followers(event["userId"])}
+    return {"statusCode": 200, "output": get_user_followers(event["twitterId"])}
 
 
-def get_user_followers(userId):
+def get_user_followers(twitterId):
     consumer_key = os.environ["TWITTER_CONSUMER_KEY"]
     consumer_secret = os.environ["TWITTER_CONSUMER_SECRET"]
     access_token = os.environ["TWITTER_ACCESS_TOKEN"]
@@ -26,7 +26,7 @@ def get_user_followers(userId):
     followers = []
     maxDepth = 1
     sleepTimeBetweenPages = 1
-    for page in tweepy.Cursor(api.followers_ids, user_id=userId).pages(maxDepth):
+    for page in tweepy.Cursor(api.followers_ids, user_id=twitterId).pages(maxDepth):
         followers.extend(page)
         time.sleep(sleepTimeBetweenPages)
 
