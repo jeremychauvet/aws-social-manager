@@ -19,6 +19,7 @@ Please install the following to use it with pre-commit :
 
 * tflint : https://github.com/terraform-linters/tflint
 * tfsec : https://github.com/liamg/tfsec
+* checkov : https://github.com/bridgecrewio/checkov
 
 ## How to plan
 
