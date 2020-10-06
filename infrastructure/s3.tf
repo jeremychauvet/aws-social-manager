@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "social-manager-front" {
-  bucket = "aws-social-manager"
+  bucket = "aws-social-manager.dfnprdxcl.de"
   acl    = "public-read"
   policy = file("${path.module}/policies/s3.json")
 
