@@ -3,3 +3,12 @@ variable "aws_region" {
   type        = string
   default     = "eu-central-1" // Frankfurt.
 }
+
+variable "tags" {
+  description = "Tags"
+  type        = map(string)
+  default = {
+    App         = "aws-social-manager"
+    Environment = "dev"
+  }
+}

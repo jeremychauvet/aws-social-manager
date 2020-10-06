@@ -10,10 +10,7 @@ resource "aws_dynamodb_table" "social-manager-db-user-followed" {
     type = "N"
   }
 
-  tags = {
-    App   = "aws-social-manager"
-    Environment = "dev"
-  }
+  tags = var.tags
 }
 
 resource "aws_dynamodb_table" "social-manager-db-user-to-follow" {
@@ -28,8 +25,5 @@ resource "aws_dynamodb_table" "social-manager-db-user-to-follow" {
     type = "N"
   }
 
-  tags = {
-    App   = "aws-social-manager"
-    Environment = "dev"
-  }
+  tags = var.tags
 }
