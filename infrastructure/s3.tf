@@ -14,10 +14,14 @@ resource "aws_s3_bucket" "social-manager-frontend" {
 # Policy definition.
 data "aws_iam_policy_document" "public-read-get-object" {
   statement {
+    principals {
+      type        = "Service"
+      identifiers = ["s3.amazonaws.com"]
+    }
     sid     = "PublicReadGetObject"
     actions = ["s3:GetObject"]
     resources = [
-      "arn:aws:s3:::aws-social-manager.${var.dns_domain}",
+      "arn:aws:s3:::aws-social-manager.${var.dns_domain}/*",
     ]
     condition {
       test     = "IpAddress"
@@ -29,6 +33,6 @@ data "aws_iam_policy_document" "public-read-get-object" {
 
 # Attach policy to bucket.
 resource "aws_s3_bucket_policy" "frontend_s3_policy" {
-  bucket = "${aws_s3_bucket.social-manager-frontend.id}"
-  policy = "${data.aws_iam_policy_document.public-read-get-object.json}"
+  bucket = aws_s3_bucket.social-manager-frontend.id
+  policy = data.aws_iam_policy_document.public-read-get-object.json
 }
