@@ -4,6 +4,16 @@ variable "aws_region" {
   default     = "eu-central-1" // Frankfurt.
 }
 
+variable "dns_domain" {
+  description = "DNS FQDN used for this project in main area in Route53."
+  type        = string
+}
+
+variable "front_allowed_ips" {
+  description = "Ip addresses allow to access social manager front."
+  type        = list
+}
+
 variable "tags" {
   description = "Tags"
   type        = map(string)

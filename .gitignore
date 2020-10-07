@@ -9,6 +9,7 @@ lambda/layers/
 
 # Infrastructure
 infrastructure/.terraform
+infrastructure/terraform.tfvars
 
 # MacOS
 .DS_Store

@@ -1,0 +1,2 @@
+dns_domain = "PLEASE_CHANGE_ME"
+front_allowed_ips = ["PLEASE_CHANGE_ME", "PLEASE_CHANGE_ME_TOO"]
