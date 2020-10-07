@@ -12,4 +12,10 @@ resource "aws_route53_record" "root_domain" {
   #   zone_id = "${aws_cloudfront_distribution.cdn.hosted_zone_id}"
   #   evaluate_target_health = false
   # }
+
+  alias {
+    zone_id                = aws_s3_bucket.social-manager-frontend.hosted_zone_id
+    name                   = aws_s3_bucket.social-manager-frontend.website_domain
+    evaluate_target_health = false
+  }
 }
