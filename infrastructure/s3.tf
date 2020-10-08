@@ -38,7 +38,7 @@ resource "aws_s3_bucket_policy" "frontend_s3_policy" {
 }
 
 resource "aws_s3_bucket_public_access_block" "frontend_s3_access" {
-  bucket = aws_s3_bucket.frontend.id
+  bucket              = aws_s3_bucket.frontend.id
   block_public_acls   = false
   block_public_policy = false
 }
