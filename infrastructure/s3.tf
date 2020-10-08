@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "social-manager-frontend" {
+resource "aws_s3_bucket" "frontend" {
   bucket        = "aws-social-manager.${var.dns_domain}"
   acl           = "public-read"
   force_destroy = true
@@ -15,8 +15,8 @@ resource "aws_s3_bucket" "social-manager-frontend" {
 data "aws_iam_policy_document" "public-read-get-object" {
   statement {
     principals {
-      type        = "Service"
-      identifiers = ["s3.amazonaws.com"]
+      type        = "AWS"
+      identifiers = ["*"]
     }
     sid     = "PublicReadGetObject"
     actions = ["s3:GetObject"]
@@ -33,6 +33,12 @@ data "aws_iam_policy_document" "public-read-get-object" {
 
 # Attach policy to bucket.
 resource "aws_s3_bucket_policy" "frontend_s3_policy" {
-  bucket = aws_s3_bucket.social-manager-frontend.id
+  bucket = aws_s3_bucket.frontend.id
   policy = data.aws_iam_policy_document.public-read-get-object.json
+}
+
+resource "aws_s3_bucket_public_access_block" "frontend_s3_access" {
+  bucket = aws_s3_bucket.frontend.id
+  block_public_acls   = false
+  block_public_policy = false
 }
