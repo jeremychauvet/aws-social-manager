@@ -1,9 +1,10 @@
-resource "aws_route53_zone" "main" {
-  name = var.dns_domain
+data "aws_route53_zone" "main" {
+  name         = var.dns_domain
+  private_zone = false
 }
 
 resource "aws_route53_record" "root_domain" {
-  zone_id = aws_route53_zone.main.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name    = "aws-social-manager.${var.dns_domain}"
   type    = "A"
 
