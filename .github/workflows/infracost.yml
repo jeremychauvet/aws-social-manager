@@ -26,4 +26,4 @@ jobs:
         with:
           ##### You should only need to modify the following #####
           terraform_dir: ./infrastructure/
-    
+
