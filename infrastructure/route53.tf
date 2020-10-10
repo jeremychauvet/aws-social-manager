@@ -5,7 +5,7 @@ data "aws_route53_zone" "main" {
 
 resource "aws_route53_record" "root_domain" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "aws-social-manager.${var.dns_domain}"
+  name    = var.dns_domain
   type    = "A"
 
   # alias {

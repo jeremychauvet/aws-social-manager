@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
     origin_id   = "frontend"
-    domain_name = "aws-social-manager.${var.dns_domain}"
+    domain_name = "${var.dns_domain}.s3.amazonaws.com"
   }
 
   # If using route53 aliases for DNS we need to declare it here too, otherwise we'll get 403s.

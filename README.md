@@ -19,6 +19,8 @@ TODO
 
 * CloudFront distributions take about 15 minutes to a deployed state after creation or modification.
 
+* Please use tfenv.
+
 ## Links
 
 In this section, you will find ressources I've used for my research.

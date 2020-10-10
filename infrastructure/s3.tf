@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "frontend" {
-  bucket        = "aws-social-manager.${var.dns_domain}"
+  bucket        = var.dns_domain
   acl           = "public-read"
   force_destroy = true
 
@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "public-read-get-object" {
     sid     = "PublicReadGetObject"
     actions = ["s3:GetObject"]
     resources = [
-      "arn:aws:s3:::aws-social-manager.${var.dns_domain}/*",
+      "arn:aws:s3:::${var.dns_domain}/*",
     ]
     condition {
       test     = "IpAddress"
