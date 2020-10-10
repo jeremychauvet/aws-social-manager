@@ -12,7 +12,7 @@ resource "aws_cognito_user_pool" "social-manager-pool" {
   }
 
   email_configuration {
-    reply_to_email_address = "noreplay@fakeurl.com"
+    reply_to_email_address = "noreplay@${var.dns_domain}"
   }
 
   password_policy {
