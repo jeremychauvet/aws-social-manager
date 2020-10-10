@@ -22,7 +22,7 @@ resource "aws_cloudfront_distribution" "cdn" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -44,4 +44,9 @@ resource "aws_cloudfront_distribution" "cdn" {
     # SNI is supported by browsers and clients released after 2010. There is no additional charge for this option.
     ssl_support_method = "sni-only"
   }
+}
+
+
+resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+  comment = "Cloudfront OAI"
 }
