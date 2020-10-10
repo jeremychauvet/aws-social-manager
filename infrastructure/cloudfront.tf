@@ -44,6 +44,8 @@ resource "aws_cloudfront_distribution" "cdn" {
     # SNI is supported by browsers and clients released after 2010. There is no additional charge for this option.
     ssl_support_method = "sni-only"
   }
+
+  tags = var.tags
 }
 
 
