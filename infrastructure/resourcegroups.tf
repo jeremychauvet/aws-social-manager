@@ -1,21 +1,17 @@
-resource "aws_resourcegroups_group" "test" {
-  name = "aws-social-manager-dev"
+resource "aws_resourcegroups_group" "social-manager" {
+  name = "social-manager"
 
   resource_query {
     query = <<JSON
 {
   "ResourceTypeFilters": [
-    "*"
+    "AWS::AllSupported"
   ],
   "TagFilters": [
     {
       "Key": "App",
       "Values": ["aws-social-manager"]
-    },
-    {
-      "Key": "Env",
-      "Values": ["dev"]
-    },
+    }
   ]
 }
 JSON
