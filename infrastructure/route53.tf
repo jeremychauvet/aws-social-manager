@@ -6,7 +6,7 @@ data "aws_route53_zone" "main" {
 resource "aws_route53_record" "root_domain" {
   zone_id = data.aws_route53_zone.main.zone_id
   name    = var.dns_domain
-  type    = "CNAME"
+  type    = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.cdn.domain_name
