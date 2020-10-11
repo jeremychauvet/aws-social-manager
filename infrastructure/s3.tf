@@ -11,26 +11,6 @@ resource "aws_s3_bucket" "frontend" {
   tags = var.tags
 }
 
-# Policy definition.
-data "aws_iam_policy_document" "public-read-get-object" {
-  statement {
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    sid     = "PublicReadGetObject"
-    actions = ["s3:GetObject"]
-    resources = [
-      "arn:aws:s3:::${var.dns_domain}/*",
-    ]
-    condition {
-      test     = "IpAddress"
-      variable = "aws:SourceIp"
-      values   = var.front_allowed_ips
-    }
-  }
-}
-
 # Attach policy to bucket.
 resource "aws_s3_bucket_policy" "frontend_s3_policy" {
   bucket = aws_s3_bucket.frontend.id
