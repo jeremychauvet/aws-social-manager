@@ -10,11 +10,6 @@ data "aws_iam_policy_document" "public-read-get-object" {
     resources = [
       "arn:aws:s3:::${var.dns_domain}/*",
     ]
-    # condition {
-    #   test     = "IpAddress"
-    #   variable = "aws:SourceIp"
-    #   values   = var.front_allowed_ips
-    # }
   }
 
   statement {

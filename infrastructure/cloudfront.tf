@@ -2,8 +2,11 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     origin_id   = "S3-${var.dns_domain}"
     domain_name = "${var.dns_domain}.s3.amazonaws.com"
-  }
 
+    s3_origin_config {
+      origin_access_identity = "origin-access-identity/cloudfront/E37PFXBM7VHF6K"
+    }
+  }
   # If using route53 aliases for DNS we need to declare it here too, otherwise we'll get 403s.
   aliases = [var.dns_domain]
 
