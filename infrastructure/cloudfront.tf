@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    origin_id   = "frontend"
+    origin_id   = "S3-${var.dns_domain}"
     domain_name = "${var.dns_domain}.s3.amazonaws.com"
   }
 
@@ -13,7 +13,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "frontend"
+    target_origin_id = "S3-${var.dns_domain}"
 
     forwarded_values {
       query_string = true
