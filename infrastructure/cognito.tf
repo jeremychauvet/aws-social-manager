@@ -11,16 +11,13 @@ resource "aws_cognito_user_pool" "social-manager-pool" {
     default_email_option = "CONFIRM_WITH_CODE"
   }
 
-  email_configuration {
-    reply_to_email_address = "noreplay@${var.dns_domain}"
-  }
-
   password_policy {
-    minimum_length    = 10
-    require_lowercase = true
-    require_numbers   = true
-    require_symbols   = false
-    require_uppercase = true
+    minimum_length                   = 10
+    require_lowercase                = true
+    require_numbers                  = true
+    require_symbols                  = false
+    require_uppercase                = true
+    temporary_password_validity_days = 7
   }
 
   schema {
