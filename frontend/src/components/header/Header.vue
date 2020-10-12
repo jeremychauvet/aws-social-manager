@@ -2,11 +2,11 @@
    <div>
       <b-navbar>
         <template slot="start">
-            <b-navbar-item href="/">
-                Home
+            <b-navbar-item>
+                <router-link to="/">Home</router-link>
             </b-navbar-item>
-            <b-navbar-item href="/about">
-                About
+            <b-navbar-item>
+                <router-link to="/about">About</router-link>
             </b-navbar-item>
         </template>
 
@@ -14,7 +14,7 @@
             <b-navbar-item tag="div">
                 <div class="buttons">
                     <button class="button is-light">
-                        Log in
+                        <router-link to="/login">Login</router-link>
                     </button>
                 </div>
             </b-navbar-item>
