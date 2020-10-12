@@ -7,4 +7,4 @@ build: install
 	npm run build
 
 start:
-	npm run start:prod
+	npm run serve	
